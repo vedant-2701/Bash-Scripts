@@ -5,19 +5,19 @@ show_help() {
     echo "Usage: $0 <project-name> --framework <framework> --lang <language> [options]"
     echo ""
     echo "Arguments:"
-    echo "  <project-name>          Name of the project directory (mandatory)"
-    echo "  --framework <framework> Framework to use (react, vue, svelte, preact, solid)"
-    echo "  --lang <language>       Language to use (js, ts)"
+    echo "  --name <project-name> or -n <project-name>  Name of the project directory (mandatory)"
+    echo "  --framework <framework> or -f <framework>   Framework to use (react, vue, svelte, preact, solid)"
+    echo "  --lang <language> or -l <language>          Language to use (js, ts)"
     echo ""
     echo "Options:"
-    echo "  --start                Automatically start the development server"
+    echo "  --start or -s          Automatically start the development server"
     echo "  --dir <path>           Custom directory for project creation (default: current directory)"
     echo "  --pm <package-manager> Package manager to use (npm, yarn, pnpm; default: npm)"
     echo "  --help                 Display this help message"
     echo ""
     echo "Examples:"
-    echo "  $0 my-project --framework react --lang ts --start"
-    echo "  $0 my-app --framework vue --lang js --pm yarn --dir ~/projects"
+    echo "  $0 --name my-project --framework react --lang ts --start"
+    echo "  $0 -n my-app -f vue -l js --pm yarn --dir ~/projects"
     exit 1
 }
 
@@ -56,11 +56,11 @@ LANGUAGE=""
 
 while [[ $# -gt 0 ]]; do
     case $1 in
-        --framework)
+        --framework|-f)
             FRAMEWORK="$2"
             shift 2
             ;;
-        --lang)
+        --lang|-l)
             LANGUAGE="$2"
             shift 2
             ;;
@@ -72,25 +72,25 @@ while [[ $# -gt 0 ]]; do
             PACKAGE_MANAGER="$2"
             shift 2
             ;;
-        --start)
+        --start|-s)
             START_SERVER=true
             shift
             ;;
         --help)
             show_help
             ;;
-        -*)
-            echo "Error: Unknown option $1"
-            show_help
-            ;;
-        *)
+        --name|-n)
             if [ -z "$PROJECT_NAME" ]; then
-                PROJECT_NAME="$1"
+                PROJECT_NAME="$2"
+                shift 2
             else
                 echo "Error: Multiple project names provided"
                 show_help
             fi
-            shift
+            ;;
+        -*)
+            echo "Error: Unknown option $1"
+            show_help
             ;;
     esac
 done
@@ -264,4 +264,5 @@ echo "  Start the server (if not already running): $PACKAGE_MANAGER run dev"
 echo "  Build for production: $PACKAGE_MANAGER run build"
 echo "  Preview production build: $PACKAGE_MANAGER run preview"
 
-exit 0
+
+exit 1
