@@ -3,7 +3,7 @@
 Welcome to *Bash Scripts*! A collection of Bash scripts to streamline your development workflow across a wide range of programming languages and frameworks, including Vite-based projects (React, Vue, Svelte, Preact, Solid), Python, Java, and more. These scripts are designed for seamless use on Windows (via Git Bash or PowerShell), Linux, macOS, and Unix-like systems. Modular, extensible, and developer-friendly! ✨
 
 <!-- ![GitHub](https://img.shields.io/github/license/vedant-2701/Bash-Scripts) -->
-![GitHub stars](https://img.shields.io/github/stars/vedant-2701/Bash-Scripts?style=social)
+<!-- ![GitHub stars](https://img.shields.io/github/stars/vedant-2701/Bash-Scripts?style=social) -->
 
 ## Table of Contents
 - [Overview](#overview-)
@@ -22,7 +22,7 @@ This repository provides a set of reusable Bash scripts to automate common tasks
 1. **Clone the Repository**:
 
   ```bash
-  git clone <https://github.com/vedant-2701/Bash-Scripts.git>
+  git clone https://github.com/vedant-2701/Bash-Scripts.git
   cd Bash-Scripts
   ```
 
